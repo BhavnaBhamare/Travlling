@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 28 Jan, 2019 6:23:47 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.pojo.Roll" table="roll" catalog="travlling">
+        <id name="rollid" type="java.lang.Integer">
+            <column name="rollid" />
+            <generator class="identity" />
+        </id>
+        <property name="rollname" type="string">
+            <column name="rollname" length="200" />
+        </property>
+        <set name="registrationdatas" table="registrationdata" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="roll_id" />
+            </key>
+            <one-to-many class="com.pojo.Registrationdata" />
+        </set>
+    </class>
+</hibernate-mapping>

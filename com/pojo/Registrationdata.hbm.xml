@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 28 Jan, 2019 6:23:47 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.pojo.Registrationdata" table="registrationdata" catalog="travlling">
+        <id name="rid" type="java.lang.Integer">
+            <column name="rid" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="roll" class="com.pojo.Roll" fetch="select">
+            <column name="roll_id" />
+        </many-to-one>
+        <property name="firstname" type="string">
+            <column name="firstname" length="200" />
+        </property>
+        <property name="lastname" type="string">
+            <column name="lastname" length="200" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="200" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="200" />
+        </property>
+        <property name="mobile" type="string">
+            <column name="mobile" length="200" />
+        </property>
+        <property name="country" type="string">
+            <column name="country" length="200" />
+        </property>
+        <set name="cabbookings" table="cabbooking" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="reg_id" />
+            </key>
+            <one-to-many class="com.pojo.Cabbooking" />
+        </set>
+        <set name="cabses" table="cabs" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="reg_id" />
+            </key>
+            <one-to-many class="com.pojo.Cabs" />
+        </set>
+        <set name="hotels" table="hotel" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="reg_id" />
+            </key>
+            <one-to-many class="com.pojo.Hotel" />
+        </set>
+        <set name="flights" table="flight" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="reg_id" />
+            </key>
+            <one-to-many class="com.pojo.Flight" />
+        </set>
+        <set name="bookedtickets" table="bookedticket" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="regid" />
+            </key>
+            <one-to-many class="com.pojo.Bookedticket" />
+        </set>
+        <set name="tourguidebookings" table="tourguidebooking" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="reg_id" />
+            </key>
+            <one-to-many class="com.pojo.Tourguidebooking" />
+        </set>
+        <set name="hotelbookings" table="hotelbooking" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="reg_id" />
+            </key>
+            <one-to-many class="com.pojo.Hotelbooking" />
+        </set>
+        <set name="tourguides" table="tourguide" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="reg_id" />
+            </key>
+            <one-to-many class="com.pojo.Tourguide" />
+        </set>
+    </class>
+</hibernate-mapping>
